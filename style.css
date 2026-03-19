@@ -5,7 +5,7 @@
     box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total */
 }
 
-/* ===== FUNDO ===== */
+/* fundo */
 body{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Fonte moderna e padrão de sistemas */
     min-height: 100vh; /* Altura mínima da tela */
@@ -17,7 +17,7 @@ body{
     overflow-y: auto;
 }
 
-/* ===== FORMAS (para evidenciar o blur) ===== */
+/* formas background */
 .fundo-shape{
     position: fixed; /* Fixa no fundo da tela */
     border-radius: 50%; /* Forma circular */
@@ -54,14 +54,14 @@ body{
     background: rgba(14, 165, 233, 0.28);
 }
 
-/* Garante que o conteúdo fique acima das shapes */
+/* conteúdo fique acima das shapes */
 header,
 .kanban{
     position: relative;
     z-index: 1; /* Coloca acima do fundo */
 }
 
-/* ===== HEADER ===== */
+/* header */
 header{
     margin-bottom: 28px; /* Espaçamento inferior */
 }
@@ -73,7 +73,7 @@ h1{
     color: #0f172a; /* Cor mais escura para destaque */
 }
 
-/* ===== FORM ===== */
+/* form */
 .form-card{
     display: flex; /* Layout flexível */
     gap: 12px; /* Espaço entre elementos */
@@ -126,14 +126,14 @@ h1{
     box-shadow: 0 10px 22px rgba(37, 99, 235, 0.28);
 }
 
-/* ===== KANBAN ===== */
+/* kanban */
 .kanban {
     display: grid; /* Layout em grade */
     grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
     gap: 20px; /* Espaço entre colunas */
 }
 
-/* ===== COLUNAS ===== */
+/* colunas */
 .coluna{
     padding: 16px;
     min-height: 420px; /* Altura mínima */
@@ -160,7 +160,7 @@ h1{
     min-height: 320px;
 }
 
-/* ===== CARDS ===== */
+/* cards */
 .card {
     padding: 14px;
     margin-bottom: 12px;

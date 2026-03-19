@@ -1,4 +1,4 @@
-console.log("JS carregado"); // Verifica se o script está funcionando
+console.log("JS carregado");
 
 // Seleção dos elementos da página
 const inputTexto = document.getElementById("textoCard");
@@ -12,7 +12,7 @@ function criarCard(texto) {
     card.classList.add("card");
     card.textContent = texto;
 
-    // Torna o card arrastável (Drag and Drop API)
+    // Torna o card arrastável no desktop
     card.setAttribute("draggable", "true");
 
     // Adiciona os eventos do card
@@ -21,35 +21,84 @@ function criarCard(texto) {
     return card;
 }
 
+// Edita o texto do card
+function editarCard(card) {
+    if (card.parentElement && card.parentElement.id === "concluido") {
+        alert("Não é possível alterar uma tarefa concluída");
+        return;
+    }
+
+    const novoTexto = prompt("Editar tarefa:", card.textContent);
+
+    if (novoTexto !== null && novoTexto.trim() !== "") {
+        card.textContent = novoTexto.trim();
+    }
+}
+
+// Move o card para a coluna escolhida
+function moverCard(card, destino) {
+    const colunaDestino = document.getElementById(destino);
+
+    if (colunaDestino) {
+        colunaDestino.appendChild(card);
+    }
+}
+
+// Abre menu de ações no mobile
+function abrirMenuMobile(card) {
+    const opcao = prompt(
+        "Escolha uma opção:\n" +
+        "1 - Mover para A Fazer\n" +
+        "2 - Mover para Fazendo\n" +
+        "3 - Mover para Concluído\n" +
+        "4 - Editar tarefa"
+    );
+
+    if (opcao === "1") {
+        moverCard(card, "a-fazer");
+    } else if (opcao === "2") {
+        moverCard(card, "fazendo");
+    } else if (opcao === "3") {
+        moverCard(card, "concluido");
+    } else if (opcao === "4") {
+        editarCard(card);
+    }
+}
+
 // Configura todos os eventos relacionados ao card
 function configurarEventosDoCard(card) {
+    let tempoToque;
 
-    // Evento ao começar a arrastar
+    // Evento ao começar a arrastar no desktop
     card.addEventListener("dragstart", function () {
         card.classList.add("arrastando");
     });
 
-    // Evento ao finalizar o arraste
+    // Evento ao finalizar o arraste no desktop
     card.addEventListener("dragend", function () {
         card.classList.remove("arrastando");
     });
 
-    // Evento de duplo clique para editar o texto
+    // Duplo clique para editar no desktop
     card.addEventListener("dblclick", function () {
+        editarCard(card);
+    });
 
-        // Impede edição se estiver na coluna concluído
-        if (card.parentElement && card.parentElement.id === "concluido") {
-            alert("Não é possível alterar uma tarefa concluída");
-            return;
-        }
+    // Toque longo no mobile
+    card.addEventListener("touchstart", function () {
+        tempoToque = setTimeout(function () {
+            abrirMenuMobile(card);
+        }, 700);
+    });
 
-        // Solicita novo texto ao usuário
-        const novoTexto = prompt("Editar tarefa:", card.textContent);
+    // Cancela o toque longo se o usuário soltar antes
+    card.addEventListener("touchend", function () {
+        clearTimeout(tempoToque);
+    });
 
-        // Atualiza o conteúdo se válido
-        if (novoTexto !== null && novoTexto.trim() !== "") {
-            card.textContent = novoTexto.trim();
-        }
+    // Cancela se mover o dedo
+    card.addEventListener("touchmove", function () {
+        clearTimeout(tempoToque);
     });
 }
 
@@ -57,17 +106,14 @@ function configurarEventosDoCard(card) {
 function adicionarTarefa() {
     const texto = inputTexto.value.trim();
 
-    // Validação para evitar tarefas vazias
     if (texto === "") {
         alert("Digite uma tarefa para adicionar");
         return;
     }
 
-    // Cria e adiciona o card
     const novoCard = criarCard(texto);
     colunaAFazer.appendChild(novoCard);
 
-    // Limpa o input
     inputTexto.value = "";
     inputTexto.focus();
 }
@@ -82,16 +128,13 @@ function configurarInputEnter() {
     });
 }
 
-// Configura o sistema de Drag and Drop entre colunas
+// Configura o sistema de Drag and Drop entre colunas no desktop
 function configurarDragAndDrop() {
     listas.forEach(function (lista) {
-
-        // Permite soltar o elemento
         lista.addEventListener("dragover", function (evento) {
             evento.preventDefault();
         });
 
-        // Move o card para a nova coluna
         lista.addEventListener("drop", function () {
             const cardArrastando = document.querySelector(".arrastando");
 
