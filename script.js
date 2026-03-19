@@ -3,6 +3,7 @@ console.log("JS carregado");
 const inputTexto = document.getElementById("textoCard");
 const btnAdicionar = document.getElementById("btnAdicionar");
 const colunaAFazer = document.getElementById("a-fazer");
+const listas = document.querySelectorAll(".lista-cards");
 
 
 // Criar card
@@ -42,3 +43,14 @@ btnAdicionar.addEventListener("click", function () {
     inputTexto.focus();
 });
 
+listas.forEach(function (lista) {
+    lista.addEventListener("dragover", function (evento) {
+        evento.preventDefault();
+
+        const cardArrastando = document.querySelector(".arrastando");
+
+        if (cardArrastando) {
+            lista.appendChild(cardArrastando);
+        }
+    });
+});
