@@ -10,6 +10,8 @@ function criarCard(texto) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.textContent = texto;
+// Tornando o card arrastável
+    card.setAttribute("draggable", "true");
 
     
 
