@@ -13,6 +13,15 @@ function criarCard(texto) {
 // Tornando o card arrastável
     card.setAttribute("draggable", "true");
 
+// Evento ao começar a arrastar
+card.addEventListener("dragstart", function () {
+    card.classList.add("arrastando");
+});
+
+// Evento ao terminar de arrastar
+card.addEventListener("dragend", function () {
+    card.classList.remove("arrastando");
+});
     
 
     return card;
