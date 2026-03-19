@@ -1,33 +1,88 @@
+/* Reset */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ===== FUNDO ===== */
 body{
-
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     min-height: 100vh;
     padding: 24px;
-    background: linear-gradient(135deg, #eaf1f8 0%, #dfe8f2 45%, #cfdbe8 100%);
+    background: linear-gradient(135deg, #edf2f7 0%, #dde7f0 50%, #cad8e6 100%);
     color: #1f2937;
+    position: relative;
+    overflow: hidden;
 }
 
+/* ===== FORMAS (para evidenciar o blur) ===== */
+.fundo-shape{
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.55;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.shape-1{
+    width: 420px;
+    height: 420px;
+    top: 40px;
+    left: 20px;
+    background: rgba(37, 99, 235, 0.35);
+}
+
+.shape-2{
+    width: 520px;
+    height: 520px;
+    top: 120px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.shape-3{
+    width: 380px;
+    height: 380px;
+    bottom: 20px;
+    left: 30%;
+    background: rgba(14, 165, 233, 0.28);
+}
+
+/* Garante que o conteúdo fique acima das shapes */
+header,
+.kanban{
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== HEADER ===== */
 header{
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 
-h1 {
+h1{
     margin-bottom: 16px;
     font-size: 28px;
     font-weight: 700;
     color: #0f172a;
 }
 
+/* ===== FORM ===== */
 .form-card{
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
+    padding: 16px;
+
+    /* Glass */
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 .form-card input {
@@ -36,13 +91,13 @@ h1 {
     padding: 12px 14px;
     border: 1px solid rgba(148, 163, 184, 0.35);
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.75);
     outline: none;
     font-size: 14px;
 }
 
 .form-card input:focus{
-    border-color: rgba(59, 130, 246, 0.5);
+    border-color: rgba(59, 130, 246, 0.6);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
@@ -51,27 +106,37 @@ h1 {
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    background: rgba(37, 99, 235, 0.9);
+    background: rgba(37, 99, 235, 0.92);
     color: white;
     font-weight: 600;
     box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+    transition: 0.2s ease;
 }
 
+.form-card button:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.28);
+}
+
+/* ===== KANBAN ===== */
 .kanban {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
+/* ===== COLUNAS ===== */
 .coluna{
     padding: 16px;
     min-height: 420px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.38);
+
+    /* Glass principal */
+    background: rgba(255, 255, 255, 0.28);
     border: 1px solid rgba(255, 255, 255, 0.35);
     box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
 .coluna h2{
@@ -85,27 +150,41 @@ h1 {
     min-height: 320px;
 }
 
+/* ===== CARDS ===== */
 .card {
     padding: 14px;
     margin-bottom: 12px;
     border-radius: 14px;
     cursor: grab;
-    background: rgba(255, 255, 255, 0.62);
+
+    /* Glass leve */
+    background: rgba(255, 255, 255, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.45);
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+
     color: #1e293b;
     font-size: 14px;
     line-height: 1.4;
+    transition: 0.15s ease;
 }
 
+.card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
+/* Card sendo arrastado */
 .card.arrastando{
-    opacity: 0.65;
-    transform: scale(1.02);
+    opacity: 0.6;
+    transform: scale(1.03);
 }
 
-/* Adicionando responsividade, para telas pequenas */
-
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px){
+    body{
+        padding: 16px;
+    }
+
     .kanban{
         grid-template-columns: 1fr;
     }

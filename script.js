@@ -5,28 +5,29 @@ const btnAdicionar = document.getElementById("btnAdicionar");
 const colunaAFazer = document.getElementById("a-fazer");
 const listas = document.querySelectorAll(".lista-cards");
 
-// Criar card
+// Cria um novo card com o texto informado
 function criarCard(texto) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.textContent = texto;
-
-    // Tornando o card arrastável
     card.setAttribute("draggable", "true");
 
-    // Evento ao começar a arrastar
+    configurarEventosDoCard(card);
+
+    return card;
+}
+
+// Configura os eventos do card
+function configurarEventosDoCard(card) {
     card.addEventListener("dragstart", function () {
         card.classList.add("arrastando");
     });
 
-    // Evento ao terminar de arrastar
     card.addEventListener("dragend", function () {
         card.classList.remove("arrastando");
     });
 
-    // Evento de duplo clique para editar
     card.addEventListener("dblclick", function () {
-        // Verifica se a tarefa foi concluida e impede edicao
         if (card.parentElement && card.parentElement.id === "concluido") {
             alert("Não é possível alterar uma tarefa concluída");
             return;
@@ -38,12 +39,10 @@ function criarCard(texto) {
             card.textContent = novoTexto.trim();
         }
     });
-
-    return card;
 }
 
-// Botao de adicionar nova tarefa
-btnAdicionar.addEventListener("click", function () {
+// Adiciona uma nova tarefa na coluna A Fazer
+function adicionarTarefa() {
     const texto = inputTexto.value.trim();
 
     if (texto === "") {
@@ -56,25 +55,36 @@ btnAdicionar.addEventListener("click", function () {
 
     inputTexto.value = "";
     inputTexto.focus();
-});
+}
 
-inputTexto.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        btnAdicionar.click();
-    }
-});
-
-listas.forEach(function (lista) {
-    lista.addEventListener("dragover", function (evento) {
-        evento.preventDefault();
-    });
-
-    lista.addEventListener("drop", function () {
-        const cardArrastando = document.querySelector(".arrastando");
-
-        if (cardArrastando) {
-            lista.appendChild(cardArrastando);
+// Permite adicionar tarefa pressionando Enter
+function configurarInputEnter() {
+    inputTexto.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            adicionarTarefa();
         }
     });
-});
+}
+
+// Configura o arrastar e soltar entre colunas
+function configurarDragAndDrop() {
+    listas.forEach(function (lista) {
+        lista.addEventListener("dragover", function (evento) {
+            evento.preventDefault();
+        });
+
+        lista.addEventListener("drop", function () {
+            const cardArrastando = document.querySelector(".arrastando");
+
+            if (cardArrastando) {
+                lista.appendChild(cardArrastando);
+            }
+        });
+    });
+}
+
+// Inicialização dos eventos principais
+btnAdicionar.addEventListener("click", adicionarTarefa);
+configurarInputEnter();
+configurarDragAndDrop();
