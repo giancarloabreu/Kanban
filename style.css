@@ -176,6 +176,11 @@ h1{
     font-size: 14px;
     line-height: 1.4;
     transition: 0.15s ease;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-callout: none;
+    touch-action: manipulation;
 }
 
 /* Efeito ao passar o mouse */
@@ -190,7 +195,7 @@ h1{
     transform: scale(1.03);
 }
 
-/* ===== RESPONSIVO ===== */
+/* Responsividade*/
 @media (max-width: 768px){
     body{
         padding: 16px;
