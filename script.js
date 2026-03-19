@@ -26,6 +26,11 @@ function criarCard(texto) {
 
     // Evento de duplo clique para editar
     card.addEventListener("dblclick", function () {
+        if (card.parentElement && card.parentElement.id === "concluido") {
+            alert("Não é possível alterar uma tarefa concluída");
+            return;
+        }
+
         const novoTexto = prompt("Editar tarefa:", card.textContent);
 
         if (novoTexto !== null && novoTexto.trim() !== "") {
@@ -49,13 +54,13 @@ btnAdicionar.addEventListener("click", function () {
 
     inputTexto.value = "";
     inputTexto.focus();
+});
 
-    document.getElementById("textoCard").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-        event.preventDefault(); // Impede o envio padrão
-        document.getElementById("btnAdicionar").click(); // Aciona o botão
-        }  
-    });
+inputTexto.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        btnAdicionar.click();
+    }
 });
 
 listas.forEach(function (lista) {
