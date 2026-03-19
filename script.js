@@ -49,6 +49,13 @@ btnAdicionar.addEventListener("click", function () {
 
     inputTexto.value = "";
     inputTexto.focus();
+
+    document.getElementById("textoCard").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+        event.preventDefault(); // Impede o envio padrão
+        document.getElementById("btnAdicionar").click(); // Aciona o botão
+        }  
+    });
 });
 
 listas.forEach(function (lista) {
