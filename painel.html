@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Quadro Kanban</h1>
+
+        <div class="form-card">
+            <input type="text" id="textoCard" placeholder="Digite uma tarefa">
+            <button id="btnAdicionar">Adicionar</button>
+        </div>
+    </header>
+
+    <main class="kanban">
+        <section class="coluna">
+            <h2>A Fazer</h2>
+            <div class="lista-cards" id="a-fazer"></div>
+        </section>
+
+        <section class="coluna">
+            <h2>Fazendo</h2>
+            <div class="lista-cards" id="fazendo"></div>
+        </section>
+
+        <section class="coluna">
+            <h2>Concluído</h2>
+            <div class="lista-cards" id="concluido"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
