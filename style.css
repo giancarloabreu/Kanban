@@ -13,7 +13,8 @@ body{
     background: linear-gradient(135deg, #edf2f7 0%, #dde7f0 50%, #cad8e6 100%); /* Gradiente de fundo */
     color: #1f2937; /* Cor padrão do texto */
     position: relative; /* Permite posicionamento de elementos internos */
-    overflow: hidden; /* Evita scroll causado pelas shapes */
+    overflow-x: hidden; /* Evita scroll causado pelas shapes */
+    overflow-y: auto;
 }
 
 /* ===== FORMAS (para evidenciar o blur) ===== */
