@@ -1,31 +1,32 @@
-/* Reset */
+/* Reset básico para remover margens e paddings padrão do navegador */
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total */
 }
 
 /* ===== FUNDO ===== */
 body{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    min-height: 100vh;
-    padding: 24px;
-    background: linear-gradient(135deg, #edf2f7 0%, #dde7f0 50%, #cad8e6 100%);
-    color: #1f2937;
-    position: relative;
-    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Fonte moderna e padrão de sistemas */
+    min-height: 100vh; /* Altura mínima da tela */
+    padding: 24px; /* Espaçamento interno geral */
+    background: linear-gradient(135deg, #edf2f7 0%, #dde7f0 50%, #cad8e6 100%); /* Gradiente de fundo */
+    color: #1f2937; /* Cor padrão do texto */
+    position: relative; /* Permite posicionamento de elementos internos */
+    overflow: hidden; /* Evita scroll causado pelas shapes */
 }
 
 /* ===== FORMAS (para evidenciar o blur) ===== */
 .fundo-shape{
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.55;
-    z-index: 0;
-    pointer-events: none;
+    position: fixed; /* Fixa no fundo da tela */
+    border-radius: 50%; /* Forma circular */
+    filter: blur(90px); /* Efeito de desfoque (base do glass) */
+    opacity: 0.55; /* Transparência */
+    z-index: 0; /* Fica atrás do conteúdo */
+    pointer-events: none; /* Não interfere em cliques */
 }
 
+/* Shape azul */
 .shape-1{
     width: 420px;
     height: 420px;
@@ -34,6 +35,7 @@ body{
     background: rgba(37, 99, 235, 0.35);
 }
 
+/* Shape branca */
 .shape-2{
     width: 520px;
     height: 520px;
@@ -42,6 +44,7 @@ body{
     background: rgba(255, 255, 255, 0.45);
 }
 
+/* Shape ciano */
 .shape-3{
     width: 380px;
     height: 380px;
@@ -54,84 +57,88 @@ body{
 header,
 .kanban{
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Coloca acima do fundo */
 }
 
 /* ===== HEADER ===== */
 header{
-    margin-bottom: 28px;
+    margin-bottom: 28px; /* Espaçamento inferior */
 }
 
 h1{
     margin-bottom: 16px;
-    font-size: 28px;
-    font-weight: 700;
-    color: #0f172a;
+    font-size: 28px; /* Tamanho do título */
+    font-weight: 700; /* Negrito */
+    color: #0f172a; /* Cor mais escura para destaque */
 }
 
 /* ===== FORM ===== */
 .form-card{
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    display: flex; /* Layout flexível */
+    gap: 12px; /* Espaço entre elementos */
+    flex-wrap: wrap; /* Permite quebra em telas menores */
     padding: 16px;
 
-    /* Glass */
-    background: rgba(255, 255, 255, 0.45);
+    /* Efeito glass */
+    background: rgba(255, 255, 255, 0.45); /* Fundo semi-transparente */
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 18px;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px); /* Desfoque do fundo */
+    -webkit-backdrop-filter: blur(14px); /* Compatibilidade Safari */
 }
 
+/* Campo de input */
 .form-card input {
-    flex: 1;
-    min-width: 220px;
+    flex: 1; /* Ocupa o máximo de espaço disponível */
+    min-width: 220px; /* Tamanho mínimo */
     padding: 12px 14px;
     border: 1px solid rgba(148, 163, 184, 0.35);
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.75);
-    outline: none;
+    outline: none; /* Remove contorno padrão */
     font-size: 14px;
 }
 
+/* Efeito ao focar no input */
 .form-card input:focus{
     border-color: rgba(59, 130, 246, 0.6);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
+/* Botão */
 .form-card button {
     padding: 12px 18px;
     border: none;
     border-radius: 12px;
-    cursor: pointer;
+    cursor: pointer; /* Cursor de clique */
     background: rgba(37, 99, 235, 0.92);
     color: white;
     font-weight: 600;
     box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
-    transition: 0.2s ease;
+    transition: 0.2s ease; /* Animação suave */
 }
 
+/* Efeito hover no botão */
 .form-card button:hover{
-    transform: translateY(-1px);
+    transform: translateY(-1px); /* Leve subida */
     box-shadow: 0 10px 22px rgba(37, 99, 235, 0.28);
 }
 
 /* ===== KANBAN ===== */
 .kanban {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: grid; /* Layout em grade */
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 20px; /* Espaço entre colunas */
 }
 
 /* ===== COLUNAS ===== */
 .coluna{
     padding: 16px;
-    min-height: 420px;
+    min-height: 420px; /* Altura mínima */
     border-radius: 20px;
 
-    /* Glass principal */
+    /* Efeito glass principal */
     background: rgba(255, 255, 255, 0.28);
     border: 1px solid rgba(255, 255, 255, 0.35);
     box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
@@ -139,6 +146,7 @@ h1{
     -webkit-backdrop-filter: blur(18px);
 }
 
+/* Título das colunas */
 .coluna h2{
     margin-bottom: 16px;
     font-size: 18px;
@@ -146,6 +154,7 @@ h1{
     color: #0f172a;
 }
 
+/* Área onde os cards são inseridos */
 .lista-cards{
     min-height: 320px;
 }
@@ -155,9 +164,9 @@ h1{
     padding: 14px;
     margin-bottom: 12px;
     border-radius: 14px;
-    cursor: grab;
+    cursor: grab; /* Indica que pode arrastar */
 
-    /* Glass leve */
+    /* Efeito glass leve */
     background: rgba(255, 255, 255, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.45);
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
@@ -168,12 +177,13 @@ h1{
     transition: 0.15s ease;
 }
 
+/* Efeito ao passar o mouse */
 .card:hover{
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
 }
 
-/* Card sendo arrastado */
+/* Card enquanto está sendo arrastado */
 .card.arrastando{
     opacity: 0.6;
     transform: scale(1.03);
@@ -185,6 +195,7 @@ h1{
         padding: 16px;
     }
 
+    /* Colunas ficam uma abaixo da outra */
     .kanban{
         grid-template-columns: 1fr;
     }

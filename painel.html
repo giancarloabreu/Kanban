@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html> <!-- Define o tipo do documento como HTML5 -->
+<html lang="pt-BR"> <!-- Define o idioma da página como português do Brasil -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanban</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> <!-- Permite uso de acentos e caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade -->
+    <title>Kanban</title> <!-- Título da aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- Importa o CSS -->
 </head>
 
 <body>
 
+<!-- Formas de fundo utilizadas para efeito visual (glass/blur) -->
 <div class="fundo-shape shape-1"></div>
 <div class="fundo-shape shape-2"></div>
 <div class="fundo-shape shape-3"></div>
@@ -16,29 +17,37 @@
     <header>
         <h1>Quadro Kanban</h1>
 
+        <!-- Formulário para criação de novas tarefas -->
         <div class="form-card">
             <input type="text" id="textoCard" placeholder="Digite uma tarefa">
             <button id="btnAdicionar">Adicionar</button>
         </div>
     </header>
 
+    <!-- Estrutura principal do quadro Kanban -->
     <main class="kanban">
+
+        <!-- Coluna: A Fazer -->
         <section class="coluna">
             <h2>A Fazer</h2>
             <div class="lista-cards" id="a-fazer"></div>
         </section>
 
+        <!-- Coluna: Fazendo -->
         <section class="coluna">
             <h2>Fazendo</h2>
             <div class="lista-cards" id="fazendo"></div>
         </section>
 
+        <!-- Coluna: Concluído -->
         <section class="coluna">
             <h2>Concluído</h2>
             <div class="lista-cards" id="concluido"></div>
         </section>
+
     </main>
 
+    <!-- Importa o JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
