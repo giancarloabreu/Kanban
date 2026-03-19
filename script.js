@@ -26,6 +26,7 @@ function criarCard(texto) {
 
     // Evento de duplo clique para editar
     card.addEventListener("dblclick", function () {
+        // Verifica se a tarefa foi concluida e impede edicao
         if (card.parentElement && card.parentElement.id === "concluido") {
             alert("Não é possível alterar uma tarefa concluída");
             return;
@@ -41,6 +42,7 @@ function criarCard(texto) {
     return card;
 }
 
+// Botao de adicionar nova tarefa
 btnAdicionar.addEventListener("click", function () {
     const texto = inputTexto.value.trim();
 

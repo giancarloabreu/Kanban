@@ -64,3 +64,11 @@ cursor: pointer;
     margin-bottom: 10px;
     cursor: grab;
 }
+
+/* Adicionando responsividade, para telas pequenas */
+
+@media (max width: 768px){
+    .kanban{
+        grid-template-columns: 1fr;
+    }
+}
