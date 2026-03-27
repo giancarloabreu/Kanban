@@ -1,0 +1,30 @@
+# 📋 Quadro Kanban Interativo - Prova P1- Web 1
+
+Projeto de gerenciamento de tarefas desenvolvido para a disciplina de [Desenvolvimento Web 1 2026/1], com foco em manipulação de DOM, eventos de Drag and Drop e design responsivo utilizando apenas tecnologias nativas.
+
+## 🚀 Funcionalidades Principais
+
+* **Sistema Drag and Drop:** Movimentação de cards entre as colunas "A Fazer", "Fazendo" e "Concluído" utilizando a API HTML5.
+* **Gestão de Cards:** Criação dinâmica de novas tarefas.
+* **Edição Rápida:** Edição do conteúdo do card ao realizar um clique duplo (`dblclick`).
+* **Design Responsivo:** Interface adaptada para Desktop e Mobile via CSS Flexbox e Grid.
+* **Vanilla JS:** Desenvolvido sem o uso de frameworks (React, Vue, etc), focando em lógica pura e código limpo.
+
+## 🛠️ Tecnologias Utilizadas
+
+* **HTML5:** Estrutura semântica e API de Drag and Drop.
+* **CSS3:** Layouts modernos (Grid/Flexbox) e variáveis CSS.
+* **JavaScript (ES6+):** Manipulação complexa do DOM e gerenciamento de estado.
+
+## 📁 Estrutura do Código
+
+O projeto foi organizado de forma modular para facilitar a leitura e manutenção:
+* `index.html`: Estrutura do quadro e colunas.
+* `style.css`: Regras de estilização e media queries para responsividade.
+* `script.js`: Lógica de eventos, funções de arrastar/soltar e edição de cards.
+
+## 💻 Como Executar
+
+1. Clone o repositório:
+   ```bash
+   git clone (https://github.dev/giancarloabreu/Kanban)
